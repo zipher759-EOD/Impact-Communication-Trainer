@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#06211f">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Impact">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Impact • Communication Trainer</title>
+<style>
+:root{
+  --bg:#061b1a;--bg2:#0a2927;--panel:#0d3431;--panel2:#10413d;
+  --card:#eafff9;--card2:#d8fff5;--ink:#082725;--paper:#f2fffb;
+  --muted:#9cc5bf;--mutedDark:#547b75;--teal:#21d4c2;--aqua:#61f3df;
+  --green:#73e09f;--lime:#b8f58b;--line:rgba(181,255,241,.14);
+  --glass:rgba(255,255,255,.06);--danger:#ff8f8f;--shadow:0 24px 60px rgba(0,0,0,.32)
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--paper);font-family:-apple-system,BlinkMacSystemFont,"Avenir Next","Segoe UI",sans-serif}
+body{min-height:100vh;min-height:100dvh;background:radial-gradient(circle at 8% 0%,rgba(33,212,194,.13),transparent 34%),radial-gradient(circle at 100% 100%,rgba(115,224,159,.09),transparent 36%),var(--bg)}
+button,input,select{font:inherit}button{cursor:pointer}button:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
+.app{max-width:620px;margin:auto;min-height:100dvh;padding:calc(env(safe-area-inset-top) + 14px) 18px calc(env(safe-area-inset-bottom) + 28px)}
+.view{display:none}.view.active{display:block}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:900;color:var(--aqua)}
+.iconbtn{border:1px solid var(--line);background:var(--glass);color:var(--paper);height:44px;min-width:44px;padding:0 13px;border-radius:999px;font-size:17px}
+.hero{padding:30px 2px 16px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--green);font-weight:900}
+h1{font-size:47px;line-height:.94;margin:9px 0 14px;letter-spacing:-.055em}.hero p{margin:0;color:#c5e4df;line-height:1.5;font-size:16px;max-width:510px}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0 4px}.stat{background:var(--glass);border:1px solid var(--line);border-radius:17px;padding:11px 10px;text-align:center}.stat strong{display:block;font-size:19px}.stat span{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.primaryBlock{margin:18px 0 22px;border-radius:25px;padding:19px;background:linear-gradient(140deg,var(--teal),var(--green));color:var(--ink);box-shadow:0 16px 38px rgba(33,212,194,.14)}
+.primaryBlock .mini{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:900;opacity:.64}.primaryBlock h2{font-size:26px;margin:6px 0 8px;letter-spacing:-.035em}.primaryBlock p{margin:0 0 14px;line-height:1.4;font-size:14px}
+.cta{width:100%;border:0;border-radius:15px;padding:14px 16px;background:#06211f;color:#ecfffa;font-weight:900;letter-spacing:.02em}.cta:active{transform:scale(.99)}
+.sectionhead{display:flex;align-items:end;justify-content:space-between;margin:22px 2px 10px}.sectionhead h2{font-size:20px;margin:0}.sectionhead span{font-size:11px;color:var(--muted)}
+.modegrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.mode{border:1px solid var(--line);background:var(--glass);color:var(--paper);border-radius:19px;padding:15px;text-align:left;min-height:112px;display:flex;flex-direction:column;justify-content:space-between}.mode .ico{font-size:24px}.mode strong{font-size:16px}.mode small{color:var(--muted);line-height:1.25}.mode:active{transform:scale(.985)}
+.deckgrid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.deck{border:0;text-align:left;min-height:126px;border-radius:22px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;color:var(--ink);box-shadow:0 12px 30px rgba(0,0,0,.17)}
+.deck:nth-child(6n+1){background:#c9fff2}.deck:nth-child(6n+2){background:#a9f4e4}.deck:nth-child(6n+3){background:#bff5ce}.deck:nth-child(6n+4){background:#b7ebdf}.deck:nth-child(6n+5){background:#d7ffd2}.deck:nth-child(6n+6){background:#a7f1ef}.deck:active{transform:scale(.98)}.deck .emoji{font-size:28px}.deck .name{font-weight:900;font-size:17px;line-height:1.05}.deck .count{font-size:11px;opacity:.64;margin-top:3px}
+.footerNote{margin:24px 4px 6px;text-align:center;color:#76aaa2;font-size:11px;line-height:1.45}
+.playhead{display:flex;justify-content:space-between;align-items:center;margin:8px 0 14px}.back{border:0;background:none;color:var(--paper);padding:8px 2px;font-weight:800}.progress{font-size:12px;color:var(--muted)}
+.timerbar{display:flex;justify-content:space-between;align-items:center;background:var(--glass);border:1px solid var(--line);border-radius:17px;padding:10px 12px;margin-bottom:12px}.timer{font-size:25px;font-variant-numeric:tabular-nums;font-weight:900;letter-spacing:-.03em}.timerControls{display:flex;gap:7px}.tiny{border:1px solid var(--line);background:transparent;color:var(--paper);border-radius:11px;padding:8px 10px;font-size:12px;font-weight:800}
+.cardwrap{perspective:1100px;margin:0 0 13px}.card{position:relative;min-height:430px;background:linear-gradient(160deg,var(--card),var(--card2));color:var(--ink);border-radius:29px;padding:25px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow);overflow:hidden;transition:transform .22s ease,opacity .22s ease}.card.out{transform:translateX(-32px) rotate(-2deg);opacity:0}.card::before{content:"";position:absolute;width:190px;height:190px;border:2px solid rgba(8,39,37,.07);border-radius:50%;right:-72px;top:-86px}.card::after{content:"";position:absolute;width:100px;height:100px;border:1px solid rgba(8,39,37,.06);border-radius:50%;left:-42px;bottom:55px}
+.cardTop,.cardBottom{position:relative;z-index:2}.category{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:900;opacity:.55}.tasktitle{font-size:34px;line-height:1;letter-spacing:-.045em;margin:14px 0 12px;font-weight:900}.prompt{font-size:18px;line-height:1.42;color:#173c39}.watch{margin-top:15px;padding:11px 12px;border-radius:14px;background:rgba(8,39,37,.06);font-size:13px;line-height:1.35}.watch strong{font-weight:900}.cardmeta{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}.duration{font-size:13px;font-weight:850}.skilltag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;opacity:.55;text-align:right}
+.coach{display:none;position:relative;z-index:3;margin-top:14px;padding-top:14px;border-top:1px solid rgba(8,39,37,.13)}.coach.open{display:block}.coachLabel{font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:900;color:#247f75;margin-bottom:7px}.coachText{font-size:15px;line-height:1.43}.coachText b{font-weight:900}.example{margin-top:10px;font-size:14px;line-height:1.38;background:rgba(33,212,194,.11);border-radius:13px;padding:10px 11px}
+.actiongrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.action{border-radius:15px;padding:13px 10px;font-weight:900;border:1px solid var(--line);background:var(--glass);color:var(--paper)}.action.primary{border:0;background:var(--teal);color:var(--ink)}.action.recording{background:#173b38;border-color:#55e7d4}.action:disabled{opacity:.35;cursor:not-allowed}.micnote{font-size:10px;color:var(--muted);text-align:center;margin:9px 0 0}
+.reviewCard{background:var(--card);color:var(--ink);border-radius:28px;padding:24px;margin:20px 0;box-shadow:var(--shadow)}.reviewCard h2{font-size:31px;letter-spacing:-.04em;margin:5px 0}.reviewCard p{line-height:1.45;color:#31534f}.rategrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}.rate{border:0;border-radius:18px;padding:15px 7px;background:#d7f6ef;color:var(--ink);font-weight:900}.rate span{font-size:24px;display:block;margin-bottom:6px}.rate small{display:block;font-weight:700;opacity:.62;margin-top:3px}.rate.best{background:#a9f4d0}.rate:active{transform:scale(.98)}
+.summary{padding-top:18px}.summaryHero{background:linear-gradient(145deg,var(--panel2),#0b312e);border:1px solid var(--line);border-radius:25px;padding:22px}.summaryHero h2{font-size:34px;margin:5px 0;letter-spacing:-.04em}.xp{font-size:48px;font-weight:950;color:var(--aqua);letter-spacing:-.05em}.summaryList{margin-top:12px;display:grid;gap:9px}.summaryRow{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--line);font-size:13px}.wideBtn{width:100%;border:0;border-radius:16px;padding:14px;margin-top:12px;font-weight:900;background:var(--teal);color:var(--ink)}.ghostBtn{width:100%;border:1px solid var(--line);border-radius:16px;padding:13px;margin-top:9px;font-weight:850;background:transparent;color:var(--paper)}
+.modal{position:fixed;inset:0;background:rgba(0,12,12,.72);backdrop-filter:blur(10px);display:none;align-items:flex-end;z-index:50}.modal.open{display:flex}.sheet{background:#eafff9;color:var(--ink);width:100%;max-width:620px;margin:auto;border-radius:28px 28px 0 0;padding:20px 18px calc(env(safe-area-inset-bottom) + 22px);max-height:88dvh;overflow:auto}.sheethead{display:flex;justify-content:space-between;align-items:center}.sheet h2{margin:0;font-size:27px}.settingsGroup{margin:18px 0}.settingsGroup h3{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#517872}.settingRow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(8,39,37,.09)}.settingRow p{margin:0;font-size:14px}.settingRow small{display:block;color:#587c77;margin-top:3px}.switch{border:0;border-radius:999px;background:#cbe7e1;padding:7px 10px;font-size:12px;font-weight:900;color:var(--ink)}.dangerBtn{border:1px solid #e99a9a;background:transparent;color:#a13333;border-radius:13px;padding:11px 13px;font-weight:850}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 24px);transform:translateX(-50%) translateY(22px);background:#001412;color:#effffb;padding:11px 16px;border-radius:999px;opacity:0;pointer-events:none;transition:.2s;z-index:80;font-size:13px;border:1px solid var(--line)}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+@media(max-width:390px){h1{font-size:41px}.tasktitle{font-size:30px}.card{min-height:405px;padding:22px}.modegrid,.deckgrid{gap:9px}.rategrid{gap:7px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <section id="home" class="view active">
+    <div class="topbar"><div class="brand">IMPACT</div><button class="iconbtn" id="settingsBtn" aria-label="Settings">⚙︎</button></div>
+    <div class="hero"><div class="kicker">Communication Trainer</div><h1>Think clear.<br>Speak sharp.</h1><p>Fast daily drills for articulation, concise thinking, confident delivery, and real-world communication.</p></div>
+    <div class="statrow"><div class="stat"><strong id="streakStat">0</strong><span>Day streak</span></div><div class="stat"><strong id="xpStat">0</strong><span>Total XP</span></div><div class="stat"><strong id="todayStat">0/3</strong><span>Today</span></div></div>
+    <div class="primaryBlock"><div class="mini">Recommended • about 7 minutes</div><h2>Today's Impact Run</h2><p>One drill each for speech mechanics, thought structure, compression, presence, and application.</p><button class="cta" onclick="startPreset('daily')">Start Daily Run →</button></div>
+    <div class="sectionhead"><h2>Choose your pace</h2><span>One task at a time</span></div>
+    <div class="modegrid">
+      <button class="mode" onclick="startPreset('quick')"><span class="ico">⚡</span><div><strong>Quick Hit</strong><br><small>3 cards • ~3 min</small></div></button>
+      <button class="mode" onclick="startPreset('deep')"><span class="ico">🎯</span><div><strong>Full Practice</strong><br><small>7 cards • ~10 min</small></div></button>
+      <button class="mode" onclick="startPreset('random')"><span class="ico">🔀</span><div><strong>Shuffle</strong><br><small>5 mixed cards</small></div></button>
+      <button class="mode" onclick="startPreset('work')"><span class="ico">💼</span><div><strong>Work Mode</strong><br><small>5 professional scenarios</small></div></button>
+    </div>
+    <div class="sectionhead"><h2>Train a skill</h2><span>Focused decks</span></div><div id="deckgrid" class="deckgrid"></div>
+    <div class="footerNote">Private by design. Progress stays in this browser. Audio recordings are never uploaded or saved by the app.</div>
+  </section>
+
+  <section id="play" class="view">
+    <div class="playhead"><button class="back" onclick="confirmExit()">← Home</button><div class="progress" id="progress">Card 1 of 5</div></div>
+    <div class="timerbar"><div><div class="category" style="color:var(--muted);opacity:1">DRILL TIMER</div><div class="timer" id="timer">01:00</div></div><div class="timerControls"><button class="tiny" id="timerBtn" onclick="toggleTimer()">Start</button><button class="tiny" onclick="resetTimer()">Reset</button></div></div>
+    <div class="cardwrap"><article class="card" id="card"><div class="cardTop"><div class="category" id="category"></div><div class="tasktitle" id="tasktitle"></div><div class="prompt" id="prompt"></div><div class="watch" id="watch"></div><div class="coach" id="coach"><div class="coachLabel">Coach</div><div class="coachText" id="coachText"></div><div class="example" id="example"></div></div></div><div class="cardBottom"><div class="cardmeta"><div class="duration" id="duration"></div><div class="skilltag" id="skilltag"></div></div></div></article></div>
+    <div class="actiongrid"><button class="action" id="recordBtn" onclick="toggleRecording()">● Record</button><button class="action" id="playBtn" onclick="playRecording()" disabled>▶ Playback</button><button class="action" onclick="toggleCoach()">Flip Coach</button><button class="action primary" onclick="finishCard()">Done →</button></div>
+    <div class="micnote">Recording is optional and stays in memory only until you record again or close the page.</div>
+  </section>
+
+  <section id="review" class="view"><div class="playhead"><button class="back" onclick="show('play')">← Back</button><div class="progress">Self-review</div></div><div class="reviewCard"><div class="category">How did it land?</div><h2>Rate the rep.</h2><p>Don't chase perfection. Score the attempt quickly, notice one thing to improve, and move on.</p><div class="rategrid"><button class="rate" onclick="rateCard(1)"><span>↻</span>Needs reps<small>+5 XP</small></button><button class="rate" onclick="rateCard(2)"><span>✓</span>Solid<small>+10 XP</small></button><button class="rate best" onclick="rateCard(3)"><span>⚡</span>Sharp<small>+15 XP</small></button></div></div></section>
+
+  <section id="summary" class="view summary"><div class="topbar"><div class="brand">IMPACT</div><button class="iconbtn" onclick="show('home');renderHome()">⌂</button></div><div class="summaryHero"><div class="kicker">Session complete</div><h2>You got the reps.</h2><div class="xp" id="sessionXp">+0 XP</div><p id="summaryText">Clear communication is trained the same way as any other skill: deliberate reps, feedback, repeat.</p></div><div class="summaryList" id="summaryList"></div><button class="wideBtn" onclick="startPreset('quick')">Do a Quick Hit</button><button class="ghostBtn" onclick="show('home');renderHome()">Back to Home</button></section>
+</div>
+
+<div class="modal" id="settings"><div class="sheet"><div class="sheethead"><h2>Settings</h2><button class="iconbtn" style="color:var(--ink);border-color:rgba(8,39,37,.12)" onclick="closeSettings()">×</button></div><div class="settingsGroup"><h3>Focus</h3><div class="settingRow"><div><p>Auto-start timers</p><small>Start the countdown when each card opens.</small></div><button class="switch" id="autoTimerBtn" onclick="toggleSetting('autoTimer')">Off</button></div><div class="settingRow"><div><p>Coach hidden first</p><small>Attempt the drill before revealing guidance.</small></div><button class="switch" id="coachHiddenBtn" onclick="toggleSetting('coachHidden')">On</button></div></div><div class="settingsGroup"><h3>Privacy</h3><div class="settingRow"><div><p>Local only</p><small>No account, analytics, cloud storage, or audio upload.</small></div><span style="font-weight:900;color:#207f73">✓</span></div></div><div class="settingsGroup"><h3>Progress</h3><button class="dangerBtn" onclick="resetProgress()">Reset all progress</button></div></div></div>
+<div class="toast" id="toast"></div>
+
+<script>
+const DECKS = {
+  "Clear Thinking": [
+    {t:"One-Sentence Point",p:"Pick a real issue from today. State the entire point in one sentence, then stop.",w:"Watch for: backstory before the point.",c:"Use: <b>\"The main point is…\"</b> If the sentence needs three commas, simplify it.",e:"Example: \"The sync is failing because the source file contains duplicate IDs.\"",s:60,tag:"Structure"},
+    {t:"BLUF",p:"Give an update using: answer first, reason second, detail third.",w:"Watch for: making the listener wait for your conclusion.",c:"Lead with the bottom line. Then provide only the reason and detail needed to support it.",e:"\"The migration is delayed one day. Vendor access arrived late, so testing starts this afternoon.\"",s:75,tag:"Structure"},
+    {t:"Three Buckets",p:"Choose a complicated topic and reduce it to exactly three categories before explaining it.",w:"Watch for: lists that keep growing while you speak.",c:"Say <b>\"There are three parts…\"</b> Name all three first. Explain them second.",e:"\"We have three issues: authentication, data quality, and timing.\"",s:75,tag:"Organization"},
+    {t:"PREP",p:"Answer a random opinion question using Point → Reason → Example → Point.",w:"Watch for: examples before your position is clear.",c:"PREP gives spontaneous answers a beginning, middle, and end.",e:"\"I would keep the vendor. The failures are mostly internal. Two recent incidents came from our source data. So I would fix that first.\"",s:90,tag:"Framework"},
+    {t:"Five-Second Think",p:"Ask yourself a difficult question. Wait five full seconds before answering it.",w:"Watch for: filling the thinking space with noise.",c:"Silence is processing time. Use the pause to decide your point and two supporting pieces.",e:"Open with: \"There are two parts to that.\"",s:60,tag:"Composure"},
+    {t:"Headline First",p:"Explain something in three levels: headline, reason, optional detail.",w:"Watch for: starting at Level 3.",c:"Give the listener the headline. Let them decide whether they need more.",e:"\"The deployment is blocked. Security approval is still pending. The request went in Tuesday.\"",s:75,tag:"Hierarchy"},
+    {t:"Problem → Impact → Action",p:"Describe a problem using only these three parts: what happened, why it matters, what happens next.",w:"Watch for: technical detail that does not change the decision.",c:"This structure is ideal for operational updates and incident communication.",e:"\"The API is timing out. Rostering will be late. I'm moving the job to the backup window now.\"",s:75,tag:"Action"},
+    {t:"Decision Frame",p:"Make a recommendation and give only the two facts that most affect the decision.",w:"Watch for: presenting every fact you know.",c:"A decision briefing is not a knowledge dump. Recommendation first, decisive evidence second.",e:"\"I recommend option B. It's faster to deploy and removes the single point of failure.\"",s:75,tag:"Decision"},
+    {t:"Two-Part Answer",p:"Pick a question that normally makes you ramble. Answer with exactly two parts.",w:"Watch for: adding a third point because it occurs to you mid-sentence.",c:"Announce the container first: <b>\"Two things matter here…\"</b>",e:"Name both. Explain both. Stop.",s:60,tag:"Control"},
+    {t:"Cause vs Symptom",p:"Explain a current problem by separating the visible symptom from the likely cause.",w:"Watch for: treating observations as conclusions.",c:"Use: <b>\"What we're seeing is… The likely cause is…\"</b>",e:"\"Users see login failures. The likely cause is an expired SAML certificate.\"",s:75,tag:"Reasoning"}
+  ],
+  "Concise Delivery": [
+    {t:"60 → 30 → 15",p:"Explain one idea for 60 seconds, then 30, then 15. Keep the meaning while removing detail.",w:"Watch for: speaking faster instead of removing information.",c:"Compression is editing, not speed. Preserve the conclusion, cause, and action.",e:"Final target: one clean 15-second update.",s:150,tag:"Compression"},
+    {t:"Twelve Words",p:"State your point in twelve words or fewer.",w:"Watch for: throat-clearing phrases like \"I think that maybe…\"",c:"Force the sentence down to subject + strong verb + important object.",e:"\"Duplicate IDs broke the import; the corrected job is running now.\"",s:45,tag:"Brevity"},
+    {t:"Answer First",p:"Ask yourself a yes/no or recommendation question. Begin with Yes, No, Probably, or I don't know yet.",w:"Watch for: explaining before answering.",c:"Direct answers make you sound decisive even when uncertainty remains.",e:"\"Probably. Testing passed, but security approval is still outstanding.\"",s:60,tag:"Directness"},
+    {t:"Cut 25%",p:"Give a 30-second answer. Repeat it while deliberately removing one quarter of the words.",w:"Watch for: removing useful nouns instead of filler.",c:"Cut repetition, qualifiers, setup, and obvious context first.",e:"Keep facts. Remove verbal scaffolding.",s:75,tag:"Editing"},
+    {t:"No Backstory",p:"Explain a current issue without describing how you discovered it.",w:"Watch for: chronological storytelling when the listener needs status.",c:"Status communication is usually conclusion → evidence → next action, not a detective story.",e:"Skip: \"First I checked… then I went to…\"",s:60,tag:"Relevance"},
+    {t:"One Breath",p:"Deliver your core message in one comfortable breath.",w:"Watch for: stuffing multiple ideas into one sentence.",c:"One breath is a useful physical limit for the main point.",e:"Pause afterward. Let the message land.",s:45,tag:"Brevity"},
+    {t:"Kill the Filler",p:"Speak for 45 seconds. Every time an um, uh, like, basically, or you know is coming, close your mouth and pause.",w:"Watch for: replacing one filler with another.",c:"The replacement for filler is silence, not a new filler phrase.",e:"Pause. Breathe. Continue.",s:60,tag:"Fluency"},
+    {t:"Delete the Hedge",p:"State five opinions without \"I feel like,\" \"kind of,\" \"maybe,\" or \"I guess.\"",w:"Watch for: weakening a statement you actually believe.",c:"Keep uncertainty when it is real. Remove automatic uncertainty when it is habit.",e:"Instead of \"I feel like option B is better,\" say \"I recommend option B.\"",s:60,tag:"Confidence"},
+    {t:"Sentence Finish",p:"Speak for one minute using one thought per sentence. Finish the sentence. Pause. Start the next.",w:"Watch for: endless sentences connected by and, but, so.",c:"Think in periods, not commas.",e:"Short sentences create control.",s:60,tag:"Control"},
+    {t:"Essential / Interesting",p:"Pick five facts about a topic. Say only the facts the listener needs to act or decide.",w:"Watch for: including detail because it is interesting to you.",c:"Useful communication is audience-centered. Essential beats interesting.",e:"Ask: \"Does this change what they need to know or do?\"",s:75,tag:"Relevance"}
+  ],
+  "Articulation": [
+    {t:"Precision Ladder",p:"Say: Red leather, yellow leather. Then Unique New York. Repeat each slowly, normally, then quickly without losing consonants.",w:"Watch for: speed outrunning clarity.",c:"Over-articulate first. Relax into normal speech second. Speed is last.",e:"Clarity wins. Speed does not count if syllables disappear.",s:75,tag:"Diction"},
+    {t:"Consonant Attack",p:"Repeat Pa-Ba, Ta-Da, Ka-Ga. Then say: Proper preparation prevents poor performance.",w:"Watch for: soft word beginnings and swallowed endings.",c:"Use crisp contact, not extra volume. Let lips and tongue finish each consonant.",e:"Aim for clean P, B, T, D, K, G sounds.",s:60,tag:"Diction"},
+    {t:"Ending Drill",p:"Read ten sentences aloud and deliberately finish the final consonant of the final word.",w:"Watch for: volume and precision disappearing at sentence endings.",c:"Listeners often lose meaning when speakers trail off. Keep energy through the final word.",e:"Finish: worked, planned, fixed, next.",s:75,tag:"Diction"},
+    {t:"Slow Is Smooth",p:"Read aloud for one minute at about 85% of your normal speed.",w:"Watch for: sounding artificially slow.",c:"The goal is deliberate pacing, not dragging words. Pause between ideas instead of stretching syllables.",e:"Smooth first. Speed returns naturally.",s:60,tag:"Pacing"},
+    {t:"Jaw + Lip Warmup",p:"Exaggerate A-E-I-O-U, then say MA-ME-MI-MO-MU and PA-PE-PI-PO-PU.",w:"Watch for: tension in jaw and lips.",c:"Keep the face relaxed while making the movements larger than normal.",e:"30 seconds vowels, 30 seconds consonants.",s:60,tag:"Warmup"},
+    {t:"S / SH / CH",p:"Alternate: sip-ship-chip, see-she-chee, mass-mash-match. Then use each in a sentence.",w:"Watch for: blurring similar consonant shapes.",c:"Slow down transitions and make the tongue position deliberate.",e:"Precision before pace.",s:60,tag:"Diction"},
+    {t:"T / D Endings",p:"Say: planned, worked, checked, fixed, sent, changed. Put each word at the end of a sentence.",w:"Watch for: dropping past-tense endings.",c:"Final consonants carry grammar and meaning. Give them a clean finish without over-punching.",e:"\"The file was checked.\"",s:60,tag:"Diction"},
+    {t:"Read for Authority",p:"Read a paragraph aloud. Pause at periods, not wherever you run out of breath.",w:"Watch for: breath controlling meaning instead of punctuation controlling meaning.",c:"Take a useful breath before longer thoughts. Let sentence structure determine pace.",e:"One thought. One landing.",s:75,tag:"Pacing"},
+    {t:"Clean Numbers",p:"Say ten dates, percentages, dollar amounts, or technical identifiers slowly and distinctly.",w:"Watch for: numbers becoming a blur inside technical explanations.",c:"Numbers often carry the decision. Give them extra space.",e:"\"Three failures. Twenty-four hours. Ninety-eight percent.\"",s:60,tag:"Precision"},
+    {t:"Cold Read",p:"Open any email or article and read the first paragraph aloud as if briefing a room.",w:"Watch for: monotone and rushed punctuation.",c:"Mark the most important word in each sentence with vocal emphasis.",e:"Clear words + intentional stress.",s:75,tag:"Reading"}
+  ],
+  "Presence & Impact": [
+    {t:"Power Pause",p:"Make three statements. Pause one second immediately before the most important phrase in each.",w:"Watch for: filling the pause because it feels too long.",c:"A purposeful pause creates anticipation and gives the next words weight.",e:"\"There is one thing we cannot compromise on… data integrity.\"",s:60,tag:"Presence"},
+    {t:"Power Word",p:"Take five sentences and choose the single word that carries the most meaning. Stress only that word.",w:"Watch for: emphasizing every word and therefore emphasizing nothing.",c:"Vocal stress directs attention. Use it selectively.",e:"\"We need this completed TODAY.\"",s:60,tag:"Emphasis"},
+    {t:"Triad",p:"Turn one idea into a three-part phrase with parallel wording.",w:"Watch for: three items of wildly different length.",c:"Three beats are memorable when rhythm and grammar match.",e:"\"Find the problem. Fix the problem. Prevent the problem.\"",s:60,tag:"Rhetoric"},
+    {t:"Land the Ending",p:"Give a 30-second explanation and finish with a deliberate decision, action, principle, or summary.",w:"Watch for: \"so… yeah\" or trailing upward intonation.",c:"The final sentence tells the listener what the explanation meant.",e:"\"That's why I recommend option two.\" Then stop.",s:60,tag:"Closing"},
+    {t:"Contrast",p:"Explain a choice using: \"This isn't about X. It's about Y.\"",w:"Watch for: using contrast where the two ideas are not actually opposites.",c:"Contrast sharpens the listener's mental model.",e:"\"This isn't a speed problem. It's a data-quality problem.\"",s:60,tag:"Clarity"},
+    {t:"Calm Authority",p:"Deliver a firm recommendation at 85% of your normal speed and 90% of your normal volume.",w:"Watch for: mistaking loudness for confidence.",c:"Authority often sounds calm, paced, and final.",e:"Lower urgency in the voice. Increase precision in the words.",s:60,tag:"Presence"},
+    {t:"Parallel Structure",p:"Give three recommendations that begin with the same grammatical form.",w:"Watch for: changing sentence structure mid-list.",c:"Parallel wording sounds organized because the listener can predict the pattern.",e:"\"Verify the source. Validate the output. Document the fix.\"",s:60,tag:"Rhetoric"},
+    {t:"Strategic Repetition",p:"Choose one key phrase and repeat it exactly twice in a 30-second message.",w:"Watch for: accidental repetition of everything else.",c:"Intentional repetition reinforces a central idea when used sparingly.",e:"\"Reliability first… because in this rollout, reliability comes first.\"",s:60,tag:"Emphasis"},
+    {t:"Pace Shift",p:"Give a short explanation. Slow down only for the sentence containing the key decision.",w:"Watch for: one constant speaking speed.",c:"A slight pace change signals importance without sounding theatrical.",e:"Normal pace → slower key point → normal pace.",s:60,tag:"Delivery"},
+    {t:"Confident Uncertainty",p:"State something you do not yet know without sounding evasive.",w:"Watch for: guessing to avoid saying \"I don't know.\"",c:"Use known → unknown → next step.",e:"\"I know the failures began after the update. I don't know the exact trigger yet. I'm comparing the logs now.\"",s:75,tag:"Credibility"}
+  ],
+  "Precision Language": [
+    {t:"Ban Vague Words",p:"Explain something for one minute without thing, stuff, something, weird, or a lot.",w:"Watch for: swapping one vague word for another.",c:"Use concrete nouns and measurable descriptions.",e:"Not \"the system is weird\". Say \"the API returns duplicate records.\"",s:60,tag:"Vocabulary"},
+    {t:"Strong Verb",p:"Create five sentences using make, do, get, have, or put. Replace each weak verb with a stronger one.",w:"Watch for: turning simple language into jargon.",c:"Prefer precise verbs over inflated phrases.",e:"\"Conduct an investigation\" → \"Investigate.\"",s:75,tag:"Vocabulary"},
+    {t:"Concrete Test",p:"Make an abstract statement such as \"communication needs to improve.\" Then say exactly what that looks like in reality.",w:"Watch for: abstractions with no observable behavior.",c:"Ask: what would someone see, hear, measure, or do differently?",e:"\"Notify integrations before any production schema change.\"",s:75,tag:"Specificity"},
+    {t:"One Exact Noun",p:"Take five vague sentences and replace the broadest noun with the exact noun.",w:"Watch for: unnecessary technical jargon for nontechnical audiences.",c:"Precision means exact enough for this listener, not maximally technical.",e:"\"The issue\" → \"the expired certificate.\"",s:60,tag:"Specificity"},
+    {t:"Quantify It",p:"Replace three vague quantities with a number, range, frequency, or deadline.",w:"Watch for: inventing precision you do not actually have.",c:"Use numbers when known. Use honest ranges when exact values are unknown.",e:"\"Soon\" → \"by 3 PM.\" \"Often\" → \"three times this week.\"",s:60,tag:"Precision"},
+    {t:"Plain English",p:"Explain a technical concept without acronyms or specialized terms.",w:"Watch for: replacing jargon with a longer pile of jargon.",c:"Use familiar words, one analogy if useful, and the practical consequence.",e:"Explain SSO as \"one trusted login that opens multiple systems.\"",s:75,tag:"Audience"},
+    {t:"Audience Swap",p:"Explain the same issue first to an engineer, then to a superintendent, in 30 seconds each.",w:"Watch for: changing facts instead of changing detail.",c:"The truth stays the same. Vocabulary, depth, and emphasis change with the listener.",e:"Engineer: mechanism. Executive: impact, risk, action.",s:90,tag:"Audience"},
+    {t:"Remove Bureaucratese",p:"Rewrite three phrases such as \"in order to\" or \"at this point in time\" into plain speech, then say them aloud.",w:"Watch for: formal language that adds no meaning.",c:"Shorter wording often sounds more confident.",e:"\"At this point in time\" → \"now.\"",s:60,tag:"Editing"},
+    {t:"Specific Request",p:"Turn a vague request into a request with owner, action, and deadline.",w:"Watch for: politeness that hides what you need.",c:"A clear request is easier to accept, reject, or negotiate.",e:"\"Can your team send the corrected file by 2 PM?\"",s:60,tag:"Action"},
+    {t:"Define the Risk",p:"State a risk without using concerning, problematic, bad, or risky.",w:"Watch for: labels without consequences.",c:"Describe probability or consequence in plain language.",e:"\"If access is not restored today, tomorrow's roster sync will miss new enrollments.\"",s:75,tag:"Precision"}
+  ],
+  "Work Scenarios": [
+    {t:"30-Second Status",p:"Your manager asks, \"Where are we on it?\" Give status, blocker, and next step in 30 seconds.",w:"Watch for: recounting everything you did today.",c:"Use: <b>Status → blocker → next move.</b>",e:"\"The integration is built and testing is 80% complete. We're waiting on vendor credentials. If they arrive today, we can finish tomorrow.\"",s:60,tag:"Work"},
+    {t:"Explain an Outage",p:"A nontechnical leader asks why a service is down. Explain it without jargon in 30 seconds.",w:"Watch for: architecture detail before user impact.",c:"Impact first, simple cause second, recovery third.",e:"\"Users can't sign in because the system's trust certificate expired. We're replacing it now.\"",s:60,tag:"Incident"},
+    {t:"Disagree Up",p:"You think your manager's proposed approach creates unnecessary risk. Disagree clearly without sounding combative.",w:"Watch for: softening until your actual concern disappears.",c:"Acknowledge goal → state concern → offer alternative.",e:"\"I agree with the deadline. My concern is bypassing validation. I recommend we reduce scope instead.\"",s:75,tag:"Influence"},
+    {t:"Ask for Resources",p:"You need another person's time or a new resource. Make the request in 30 seconds.",w:"Watch for: long justification before the ask.",c:"Ask → why it matters → specific commitment needed.",e:"\"I need two hours from the identity engineer tomorrow so we can validate SSO before launch.\"",s:60,tag:"Request"},
+    {t:"Vendor Pushback",p:"A vendor says the problem is on your side, but your evidence suggests otherwise. Respond professionally and precisely.",w:"Watch for: arguing motives instead of evidence.",c:"State shared goal, observed evidence, and the exact next test you want.",e:"\"We want to isolate this quickly. Our logs show successful requests leaving our gateway and 500 responses returning. Can we compare request IDs together?\"",s:75,tag:"Negotiation"},
+    {t:"Missed Deadline",p:"Tell a stakeholder you will miss a deadline. No excuses. Give cause, new date, and mitigation.",w:"Watch for: hiding the new commitment inside explanation.",c:"Own it directly. Make the revised plan concrete.",e:"\"We won't make Thursday. Vendor access arrived two days late. The new target is Monday, and we're testing in parallel to protect that date.\"",s:75,tag:"Accountability"},
+    {t:"Executive Summary",p:"Explain a technical project to a senior leader in 30 seconds using outcome, risk, and decision needed.",w:"Watch for: tools, protocols, or implementation details that do not affect the decision.",c:"Executives usually need consequence and choice more than mechanism.",e:"\"The new rostering flow removes manual uploads. The remaining risk is vendor API capacity. I need approval for a phased launch.\"",s:60,tag:"Executive"},
+    {t:"Meeting Interruption",p:"A meeting is drifting into details. Redirect it respectfully toward the decision that must be made.",w:"Watch for: sounding dismissive of useful discussion.",c:"Summarize what is settled, name the unresolved decision, ask a focused question.",e:"\"It sounds like we agree on the cause. The decision left is whether we delay launch or reduce scope. Which are we choosing?\"",s:60,tag:"Facilitation"},
+    {t:"Own a Mistake",p:"You made an error that affected others. Explain it in 30 seconds without defensiveness.",w:"Watch for: passive voice that hides ownership.",c:"I did X → impact → correction → prevention.",e:"\"I deployed the wrong mapping. It delayed the import. I rolled it back, and I'm adding a validation check before the next release.\"",s:60,tag:"Accountability"},
+    {t:"Say No Clearly",p:"Decline a request that would overload your team while protecting the relationship.",w:"Watch for: a vague maybe that creates false expectations.",c:"Clear no → brief reason → workable alternative.",e:"\"We can't take that on this week without delaying launch. I can schedule it for Tuesday or help identify another owner.\"",s:60,tag:"Boundary"},
+    {t:"Escalate Risk",p:"Tell leadership about a risk before it becomes an incident. Keep it factual and actionable.",w:"Watch for: alarm without a requested action.",c:"Risk → probability/impact → trigger → recommendation.",e:"\"We're likely to hit the API limit during enrollment week. If volume exceeds current tests, imports will queue. I recommend raising the vendor limit before Friday.\"",s:75,tag:"Risk"},
+    {t:"Teach in 45",p:"Teach a coworker one process in 45 seconds using goal, three steps, and verification.",w:"Watch for: edge cases before the basic path is understood.",c:"Teach the normal path first. Add exceptions only after the model is clear.",e:"\"Goal: validate the roster. Export, compare counts, then spot-check IDs. You're done when totals and five samples match.\"",s:75,tag:"Teaching"}
+  ]
+};
+
+const CATEGORY_ICON={"Clear Thinking":"🧠","Concise Delivery":"✂️","Articulation":"🗣️","Presence & Impact":"⚡","Precision Language":"🎯","Work Scenarios":"💼"};
+const STORAGE_KEY="impactTrainerV1";
+const SETTINGS_KEY="impactTrainerSettingsV1";
+let state=JSON.parse(localStorage.getItem(STORAGE_KEY)||"null")||{xp:0,completed:0,days:{},ratings:{}};
+let settings=JSON.parse(localStorage.getItem(SETTINGS_KEY)||"null")||{autoTimer:false,coachHidden:true};
+let session=[],sessionIndex=0,sessionXp=0,sessionRatings=[];
+let secondsLeft=60,timerId=null,timerRunning=false;
+let mediaRecorder=null,audioChunks=[],audioBlobUrl=null,recording=false;
+
+function save(){localStorage.setItem(STORAGE_KEY,JSON.stringify(state));localStorage.setItem(SETTINGS_KEY,JSON.stringify(settings));}
+function show(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));document.getElementById(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'});}
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1500);if(navigator.vibrate)navigator.vibrate(10);}
+function dateKey(d=new Date()){return d.toLocaleDateString('en-CA');}
+function previousDateKey(daysBack){const d=new Date();d.setDate(d.getDate()-daysBack);return dateKey(d);}
+function currentStreak(){let streak=0;const todayCount=state.days[dateKey()]||0;let offset=todayCount>=3?0:1;while((state.days[previousDateKey(offset)]||0)>=3){streak++;offset++;}if(todayCount>=3)streak++;return streak;}
+function renderHome(){document.getElementById('streakStat').textContent=currentStreak();document.getElementById('xpStat').textContent=state.xp;document.getElementById('todayStat').textContent=`${Math.min(state.days[dateKey()]||0,3)}/3`;renderDecks();}
+function renderDecks(){const grid=document.getElementById('deckgrid');grid.innerHTML='';Object.keys(DECKS).forEach(name=>{const b=document.createElement('button');b.className='deck';b.innerHTML=`<div class="emoji">${CATEGORY_ICON[name]}</div><div><div class="name">${name}</div><div class="count">${DECKS[name].length} cards</div></div>`;b.onclick=()=>startDeck(name);grid.appendChild(b);});}
+function shuffle(a){const x=[...a];for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+function allCards(){return Object.entries(DECKS).flatMap(([category,cards])=>cards.map(card=>({...card,category})));}
+function pick(category,count=1){return shuffle(DECKS[category]).slice(0,count).map(c=>({...c,category}));}
+function startDeck(name){session=shuffle(DECKS[name]).slice(0,Math.min(6,DECKS[name].length)).map(c=>({...c,category:name}));beginSession();}
+function startPreset(type){
+  if(type==='daily') session=[...pick('Articulation'),...pick('Clear Thinking'),...pick('Concise Delivery'),...pick('Presence & Impact'),...pick('Work Scenarios')];
+  if(type==='quick') session=shuffle(allCards()).slice(0,3);
+  if(type==='deep') session=[...pick('Articulation'),...pick('Clear Thinking',2),...pick('Concise Delivery'),...pick('Precision Language'),...pick('Presence & Impact'),...pick('Work Scenarios')];
+  if(type==='random') session=shuffle(allCards()).slice(0,5);
+  if(type==='work') session=pick('Work Scenarios',5);
+  beginSession();
+}
+function beginSession(){sessionIndex=0;sessionXp=0;sessionRatings=[];stopTimer();clearRecording();show('play');renderCard();}
+function renderCard(){
+  const c=session[sessionIndex];if(!c){finishSession();return;}
+  document.getElementById('progress').textContent=`Card ${sessionIndex+1} of ${session.length}`;
+  document.getElementById('category').textContent=c.category;
+  document.getElementById('tasktitle').textContent=c.t;
+  document.getElementById('prompt').textContent=c.p;
+  const parts=c.w.split(':');
+  document.getElementById('watch').innerHTML=`<strong>${parts[0]}:</strong>${parts.length>1?c.w.substring(c.w.indexOf(':')+1):c.w}`;
+  document.getElementById('coachText').innerHTML=c.c;document.getElementById('example').innerHTML=c.e;
+  document.getElementById('duration').textContent=`${c.s} second drill`;document.getElementById('skilltag').textContent=c.tag;
+  document.getElementById('coach').classList.toggle('open',!settings.coachHidden);secondsLeft=c.s;updateTimer();document.getElementById('card').classList.remove('out');clearRecording();if(settings.autoTimer)startTimer();
+}
+function toggleCoach(){document.getElementById('coach').classList.toggle('open');}
+function formatTime(s){const m=Math.floor(s/60),sec=s%60;return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;}
+function updateTimer(){document.getElementById('timer').textContent=formatTime(Math.max(0,secondsLeft));document.getElementById('timerBtn').textContent=timerRunning?'Pause':'Start';}
+function startTimer(){if(timerRunning)return;timerRunning=true;updateTimer();timerId=setInterval(()=>{secondsLeft--;updateTimer();if(secondsLeft<=0){stopTimer();toast('Time. Land the final sentence.');}},1000);}
+function stopTimer(){if(timerId)clearInterval(timerId);timerId=null;timerRunning=false;const btn=document.getElementById('timerBtn');if(btn)updateTimer();}
+function toggleTimer(){timerRunning?stopTimer():startTimer();}
+function resetTimer(){stopTimer();secondsLeft=session[sessionIndex]?.s||60;updateTimer();}
+function finishCard(){stopTimer();show('review');}
+function rateCard(r){const gain=r===1?5:r===2?10:15;state.xp+=gain;state.completed++;state.days[dateKey()]=(state.days[dateKey()]||0)+1;const cat=session[sessionIndex].category;state.ratings[cat]=state.ratings[cat]||{sum:0,count:0};state.ratings[cat].sum+=r;state.ratings[cat].count++;sessionXp+=gain;sessionRatings.push({category:cat,rating:r,title:session[sessionIndex].t});save();sessionIndex++;if(sessionIndex>=session.length){finishSession();return;}show('play');const card=document.getElementById('card');card.classList.add('out');setTimeout(renderCard,130);}
+function finishSession(){stopTimer();clearRecording();document.getElementById('sessionXp').textContent=`+${sessionXp} XP`;const sharp=sessionRatings.filter(x=>x.rating===3).length;document.getElementById('summaryText').textContent=sharp>=Math.ceil(sessionRatings.length/2)?'Strong run. Keep the pauses and clean endings, and resist adding detail after the point is already clear.':'Good reps. Pick one weakness you noticed and attack that skill again tomorrow.';const list=document.getElementById('summaryList');list.innerHTML='';const byCat={};sessionRatings.forEach(x=>{byCat[x.category]=byCat[x.category]||[];byCat[x.category].push(x.rating);});Object.entries(byCat).forEach(([cat,vals])=>{const avg=vals.reduce((a,b)=>a+b,0)/vals.length;const label=avg>=2.6?'Sharp':avg>=1.6?'Solid':'Needs reps';const row=document.createElement('div');row.className='summaryRow';row.innerHTML=`<span>${CATEGORY_ICON[cat]} ${cat}</span><strong>${label}</strong>`;list.appendChild(row);});show('summary');renderHome();}
+function confirmExit(){if(sessionIndex>0&&sessionIndex<session.length&&!confirm('End this session and return home?'))return;stopTimer();clearRecording();show('home');renderHome();}
+
+async function toggleRecording(){
+  if(recording){mediaRecorder.stop();return;}
+  if(!navigator.mediaDevices||!window.MediaRecorder){toast('Recording is not supported in this browser.');return;}
+  try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});audioChunks=[];mediaRecorder=new MediaRecorder(stream);mediaRecorder.ondataavailable=e=>{if(e.data.size)audioChunks.push(e.data);};mediaRecorder.onstop=()=>{recording=false;document.getElementById('recordBtn').textContent='● Record';document.getElementById('recordBtn').classList.remove('recording');stream.getTracks().forEach(t=>t.stop());const blob=new Blob(audioChunks,{type:mediaRecorder.mimeType||'audio/webm'});if(audioBlobUrl)URL.revokeObjectURL(audioBlobUrl);audioBlobUrl=URL.createObjectURL(blob);document.getElementById('playBtn').disabled=false;toast('Recording ready for playback');};mediaRecorder.start();recording=true;document.getElementById('recordBtn').textContent='■ Stop';document.getElementById('recordBtn').classList.add('recording');}
+  catch(e){toast('Microphone permission was not granted.');}
+}
+function playRecording(){if(audioBlobUrl)new Audio(audioBlobUrl).play();}
+function clearRecording(){if(mediaRecorder&&recording){try{mediaRecorder.stop();}catch(e){}}recording=false;if(audioBlobUrl){URL.revokeObjectURL(audioBlobUrl);audioBlobUrl=null;}const r=document.getElementById('recordBtn'),p=document.getElementById('playBtn');if(r){r.textContent='● Record';r.classList.remove('recording');}if(p)p.disabled=true;}
+
+document.getElementById('settingsBtn').onclick=()=>{renderSettings();document.getElementById('settings').classList.add('open');};
+function closeSettings(){document.getElementById('settings').classList.remove('open');}
+function renderSettings(){document.getElementById('autoTimerBtn').textContent=settings.autoTimer?'On':'Off';document.getElementById('coachHiddenBtn').textContent=settings.coachHidden?'On':'Off';}
+function toggleSetting(key){settings[key]=!settings[key];save();renderSettings();}
+function resetProgress(){if(!confirm('Reset XP, streak, ratings, and completed-card history?'))return;state={xp:0,completed:0,days:{},ratings:{}};save();renderHome();closeSettings();toast('Progress reset');}
+document.getElementById('settings').addEventListener('click',e=>{if(e.target.id==='settings')closeSettings();});
+renderHome();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
+</script>
+</body>
+</html>
