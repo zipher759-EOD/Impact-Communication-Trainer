@@ -1,0 +1,1 @@
+# impact-communication-trainer-under-zipher759-EOD
