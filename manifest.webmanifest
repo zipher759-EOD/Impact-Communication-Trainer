@@ -1,14 +1,25 @@
 {
-  "name": "Impact Communication Trainer",
-  "short_name": "Impact",
-  "description": "Private, offline-first communication drills for clear thinking, concise delivery, articulation, presence, precision language, and work scenarios.",
+  "name": "IMPACT Communication Trainer",
+  "short_name": "IMPACT",
+  "description": "ADHD-friendly articulation and communication training game.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#061b1a",
-  "theme_color": "#06211f",
+  "orientation": "portrait-primary",
+  "background_color": "#dff8f3",
+  "theme_color": "#2b7c74",
   "icons": [
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }

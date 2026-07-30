@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
-<meta name="theme-color" content="#06211f">
+<meta name="theme-color" content="#2b7c74">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Impact">
@@ -12,23 +12,41 @@
 <title>Impact • Communication Trainer</title>
 <style>
 :root{
-  --bg:#061b1a;--bg2:#0a2927;--panel:#0d3431;--panel2:#10413d;
-  --card:#eafff9;--card2:#d8fff5;--ink:#082725;--paper:#f2fffb;
-  --muted:#9cc5bf;--mutedDark:#547b75;--teal:#21d4c2;--aqua:#61f3df;
-  --green:#73e09f;--lime:#b8f58b;--line:rgba(181,255,241,.14);
-  --glass:rgba(255,255,255,.06);--danger:#ff8f8f;--shadow:0 24px 60px rgba(0,0,0,.32)
+  --bg:#2b7c74;
+  --bg2:#3f9a92;
+  --panel:#2f847c;
+  --panel2:#3e9e95;
+  --card:#eafff9;
+  --card2:#d8fff5;
+  --ink:#082725;
+  --paper:#f2fffb;
+  --muted:#d9f4ef;
+  --mutedDark:#4e7d77;
+  --teal:#21d4c2;
+  --aqua:#61f3df;
+  --green:#73e09f;
+  --lime:#b8f58b;
+  --line:rgba(255,255,255,.28);
+  --glass:rgba(255,255,255,.18);
+  --danger:#ff8f8f;
+  --shadow:0 24px 60px rgba(0,0,0,.32);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;min-height:100%;background:var(--bg);color:var(--paper);font-family:-apple-system,BlinkMacSystemFont,"Avenir Next","Segoe UI",sans-serif}
-body{min-height:100vh;min-height:100dvh;background:radial-gradient(circle at 8% 0%,rgba(33,212,194,.13),transparent 34%),radial-gradient(circle at 100% 100%,rgba(115,224,159,.09),transparent 36%),var(--bg)}
+body{min-height:100vh;min-height:100dvh;background:
+  radial-gradient(circle at 8% 0%,rgba(255,255,255,.22),transparent 34%),
+  radial-gradient(circle at 100% 100%,rgba(115,224,159,.16),transparent 36%),
+  linear-gradient(180deg,var(--bg2),var(--bg))}
 button,input,select{font:inherit}button{cursor:pointer}button:focus-visible{outline:3px solid var(--aqua);outline-offset:3px}
 .app{max-width:620px;margin:auto;min-height:100dvh;padding:calc(env(safe-area-inset-top) + 14px) 18px calc(env(safe-area-inset-bottom) + 28px)}
 .view{display:none}.view.active{display:block}
-.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}.brand{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:900;color:var(--aqua)}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{font-size:13px;letter-spacing:.24em;text-transform:uppercase;font-weight:900;color:var(--aqua)}
 .iconbtn{border:1px solid var(--line);background:var(--glass);color:var(--paper);height:44px;min-width:44px;padding:0 13px;border-radius:999px;font-size:17px}
 .hero{padding:30px 2px 16px}.kicker{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--green);font-weight:900}
 h1{font-size:47px;line-height:.94;margin:9px 0 14px;letter-spacing:-.055em}.hero p{margin:0;color:#c5e4df;line-height:1.5;font-size:16px;max-width:510px}
-.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0 4px}.stat{background:var(--glass);border:1px solid var(--line);border-radius:17px;padding:11px 10px;text-align:center}.stat strong{display:block;font-size:19px}.stat span{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:15px 0 4px}
+.stat{background:var(--glass);border:1px solid var(--line);border-radius:17px;padding:11px 10px;text-align:center}.stat strong{display:block;font-size:19px}.stat span{font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:800}
 .primaryBlock{margin:18px 0 22px;border-radius:25px;padding:19px;background:linear-gradient(140deg,var(--teal),var(--green));color:var(--ink);box-shadow:0 16px 38px rgba(33,212,194,.14)}
 .primaryBlock .mini{font-size:11px;letter-spacing:.13em;text-transform:uppercase;font-weight:900;opacity:.64}.primaryBlock h2{font-size:26px;margin:6px 0 8px;letter-spacing:-.035em}.primaryBlock p{margin:0 0 14px;line-height:1.4;font-size:14px}
 .cta{width:100%;border:0;border-radius:15px;padding:14px 16px;background:#06211f;color:#ecfffa;font-weight:900;letter-spacing:.02em}.cta:active{transform:scale(.99)}
@@ -40,9 +58,10 @@ h1{font-size:47px;line-height:.94;margin:9px 0 14px;letter-spacing:-.055em}.hero
 .playhead{display:flex;justify-content:space-between;align-items:center;margin:8px 0 14px}.back{border:0;background:none;color:var(--paper);padding:8px 2px;font-weight:800}.progress{font-size:12px;color:var(--muted)}
 .timerbar{display:flex;justify-content:space-between;align-items:center;background:var(--glass);border:1px solid var(--line);border-radius:17px;padding:10px 12px;margin-bottom:12px}.timer{font-size:25px;font-variant-numeric:tabular-nums;font-weight:900;letter-spacing:-.03em}.timerControls{display:flex;gap:7px}.tiny{border:1px solid var(--line);background:transparent;color:var(--paper);border-radius:11px;padding:8px 10px;font-size:12px;font-weight:800}
 .cardwrap{perspective:1100px;margin:0 0 13px}.card{position:relative;min-height:430px;background:linear-gradient(160deg,var(--card),var(--card2));color:var(--ink);border-radius:29px;padding:25px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:var(--shadow);overflow:hidden;transition:transform .22s ease,opacity .22s ease}.card.out{transform:translateX(-32px) rotate(-2deg);opacity:0}.card::before{content:"";position:absolute;width:190px;height:190px;border:2px solid rgba(8,39,37,.07);border-radius:50%;right:-72px;top:-86px}.card::after{content:"";position:absolute;width:100px;height:100px;border:1px solid rgba(8,39,37,.06);border-radius:50%;left:-42px;bottom:55px}
-.cardTop,.cardBottom{position:relative;z-index:2}.category{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:900;opacity:.55}.tasktitle{font-size:34px;line-height:1;letter-spacing:-.045em;margin:14px 0 12px;font-weight:900}.prompt{font-size:18px;line-height:1.42;color:#173c39}.watch{margin-top:15px;padding:11px 12px;border-radius:14px;background:rgba(8,39,37,.06);font-size:13px;line-height:1.35}.watch strong{font-weight:900}.cardmeta{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}.duration{font-size:13px;font-weight:850}.skilltag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;opacity:.55;text-align:right}
+.cardTop,.cardBottom{position:relative;z-index:2}.category{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:900;opacity:.55}.tasktitle{font-size:34px;line-height:1.0;letter-spacing:-.045em;margin:14px 0 12px;font-weight:900}.prompt{font-size:18px;line-height:1.42;color:#173c39}.watch{margin-top:15px;padding:11px 12px;border-radius:14px;background:rgba(8,39,37,.06);font-size:13px;line-height:1.35}.watch strong{font-weight:900}.cardmeta{display:flex;justify-content:space-between;align-items:flex-end;gap:12px}.duration{font-size:13px;font-weight:850}.skilltag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:900;opacity:.55;text-align:right}
 .coach{display:none;position:relative;z-index:3;margin-top:14px;padding-top:14px;border-top:1px solid rgba(8,39,37,.13)}.coach.open{display:block}.coachLabel{font-size:11px;text-transform:uppercase;letter-spacing:.13em;font-weight:900;color:#247f75;margin-bottom:7px}.coachText{font-size:15px;line-height:1.43}.coachText b{font-weight:900}.example{margin-top:10px;font-size:14px;line-height:1.38;background:rgba(33,212,194,.11);border-radius:13px;padding:10px 11px}
-.actiongrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.action{border-radius:15px;padding:13px 10px;font-weight:900;border:1px solid var(--line);background:var(--glass);color:var(--paper)}.action.primary{border:0;background:var(--teal);color:var(--ink)}.action.recording{background:#173b38;border-color:#55e7d4}.action:disabled{opacity:.35;cursor:not-allowed}.micnote{font-size:10px;color:var(--muted);text-align:center;margin:9px 0 0}
+.actiongrid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.action{border-radius:15px;padding:13px 10px;font-weight:900;border:1px solid var(--line);background:var(--glass);color:var(--paper)}.action.primary{border:0;background:var(--teal);color:var(--ink)}.action.recording{background:#173b38;border-color:#55e7d4}.action:disabled{opacity:.35;cursor:not-allowed}
+.micnote{font-size:10px;color:var(--muted);text-align:center;margin:9px 0 0}
 .reviewCard{background:var(--card);color:var(--ink);border-radius:28px;padding:24px;margin:20px 0;box-shadow:var(--shadow)}.reviewCard h2{font-size:31px;letter-spacing:-.04em;margin:5px 0}.reviewCard p{line-height:1.45;color:#31534f}.rategrid{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:18px}.rate{border:0;border-radius:18px;padding:15px 7px;background:#d7f6ef;color:var(--ink);font-weight:900}.rate span{font-size:24px;display:block;margin-bottom:6px}.rate small{display:block;font-weight:700;opacity:.62;margin-top:3px}.rate.best{background:#a9f4d0}.rate:active{transform:scale(.98)}
 .summary{padding-top:18px}.summaryHero{background:linear-gradient(145deg,var(--panel2),#0b312e);border:1px solid var(--line);border-radius:25px;padding:22px}.summaryHero h2{font-size:34px;margin:5px 0;letter-spacing:-.04em}.xp{font-size:48px;font-weight:950;color:var(--aqua);letter-spacing:-.05em}.summaryList{margin-top:12px;display:grid;gap:9px}.summaryRow{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border-radius:14px;background:var(--glass);border:1px solid var(--line);font-size:13px}.wideBtn{width:100%;border:0;border-radius:16px;padding:14px;margin-top:12px;font-weight:900;background:var(--teal);color:var(--ink)}.ghostBtn{width:100%;border:1px solid var(--line);border-radius:16px;padding:13px;margin-top:9px;font-weight:850;background:transparent;color:var(--paper)}
 .modal{position:fixed;inset:0;background:rgba(0,12,12,.72);backdrop-filter:blur(10px);display:none;align-items:flex-end;z-index:50}.modal.open{display:flex}.sheet{background:#eafff9;color:var(--ink);width:100%;max-width:620px;margin:auto;border-radius:28px 28px 0 0;padding:20px 18px calc(env(safe-area-inset-bottom) + 22px);max-height:88dvh;overflow:auto}.sheethead{display:flex;justify-content:space-between;align-items:center}.sheet h2{margin:0;font-size:27px}.settingsGroup{margin:18px 0}.settingsGroup h3{font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:#517872}.settingRow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid rgba(8,39,37,.09)}.settingRow p{margin:0;font-size:14px}.settingRow small{display:block;color:#587c77;margin-top:3px}.switch{border:0;border-radius:999px;background:#cbe7e1;padding:7px 10px;font-size:12px;font-weight:900;color:var(--ink)}.dangerBtn{border:1px solid #e99a9a;background:transparent;color:#a13333;border-radius:13px;padding:11px 13px;font-weight:850}
@@ -54,10 +73,28 @@ h1{font-size:47px;line-height:.94;margin:9px 0 14px;letter-spacing:-.055em}.hero
 <body>
 <div class="app">
   <section id="home" class="view active">
-    <div class="topbar"><div class="brand">IMPACT</div><button class="iconbtn" id="settingsBtn" aria-label="Settings">⚙︎</button></div>
-    <div class="hero"><div class="kicker">Communication Trainer</div><h1>Think clear.<br>Speak sharp.</h1><p>Fast daily drills for articulation, concise thinking, confident delivery, and real-world communication.</p></div>
-    <div class="statrow"><div class="stat"><strong id="streakStat">0</strong><span>Day streak</span></div><div class="stat"><strong id="xpStat">0</strong><span>Total XP</span></div><div class="stat"><strong id="todayStat">0/3</strong><span>Today</span></div></div>
-    <div class="primaryBlock"><div class="mini">Recommended • about 7 minutes</div><h2>Today's Impact Run</h2><p>One drill each for speech mechanics, thought structure, compression, presence, and application.</p><button class="cta" onclick="startPreset('daily')">Start Daily Run →</button></div>
+    <div class="topbar">
+      <div class="brand">IMPACT</div>
+      <button class="iconbtn" id="settingsBtn" aria-label="Settings">⚙︎</button>
+    </div>
+    <div class="hero">
+      <div class="kicker">Communication Trainer</div>
+      <h1>Think clear.<br>Speak sharp.</h1>
+      <p>Fast daily drills for articulation, concise thinking, confident delivery, and real-world communication.</p>
+    </div>
+    <div class="statrow">
+      <div class="stat"><strong id="streakStat">0</strong><span>Day streak</span></div>
+      <div class="stat"><strong id="xpStat">0</strong><span>Total XP</span></div>
+      <div class="stat"><strong id="todayStat">0/3</strong><span>Today</span></div>
+    </div>
+
+    <div class="primaryBlock">
+      <div class="mini">Recommended • about 7 minutes</div>
+      <h2>Today's Impact Run</h2>
+      <p>One drill each for speech mechanics, thought structure, compression, presence, and application.</p>
+      <button class="cta" onclick="startPreset('daily')">Start Daily Run →</button>
+    </div>
+
     <div class="sectionhead"><h2>Choose your pace</h2><span>One task at a time</span></div>
     <div class="modegrid">
       <button class="mode" onclick="startPreset('quick')"><span class="ico">⚡</span><div><strong>Quick Hit</strong><br><small>3 cards • ~3 min</small></div></button>
@@ -65,24 +102,97 @@ h1{font-size:47px;line-height:.94;margin:9px 0 14px;letter-spacing:-.055em}.hero
       <button class="mode" onclick="startPreset('random')"><span class="ico">🔀</span><div><strong>Shuffle</strong><br><small>5 mixed cards</small></div></button>
       <button class="mode" onclick="startPreset('work')"><span class="ico">💼</span><div><strong>Work Mode</strong><br><small>5 professional scenarios</small></div></button>
     </div>
-    <div class="sectionhead"><h2>Train a skill</h2><span>Focused decks</span></div><div id="deckgrid" class="deckgrid"></div>
+
+    <div class="sectionhead"><h2>Train a skill</h2><span>Focused decks</span></div>
+    <div id="deckgrid" class="deckgrid"></div>
     <div class="footerNote">Private by design. Progress stays in this browser. Audio recordings are never uploaded or saved by the app.</div>
   </section>
 
   <section id="play" class="view">
-    <div class="playhead"><button class="back" onclick="confirmExit()">← Home</button><div class="progress" id="progress">Card 1 of 5</div></div>
-    <div class="timerbar"><div><div class="category" style="color:var(--muted);opacity:1">DRILL TIMER</div><div class="timer" id="timer">01:00</div></div><div class="timerControls"><button class="tiny" id="timerBtn" onclick="toggleTimer()">Start</button><button class="tiny" onclick="resetTimer()">Reset</button></div></div>
-    <div class="cardwrap"><article class="card" id="card"><div class="cardTop"><div class="category" id="category"></div><div class="tasktitle" id="tasktitle"></div><div class="prompt" id="prompt"></div><div class="watch" id="watch"></div><div class="coach" id="coach"><div class="coachLabel">Coach</div><div class="coachText" id="coachText"></div><div class="example" id="example"></div></div></div><div class="cardBottom"><div class="cardmeta"><div class="duration" id="duration"></div><div class="skilltag" id="skilltag"></div></div></div></article></div>
-    <div class="actiongrid"><button class="action" id="recordBtn" onclick="toggleRecording()">● Record</button><button class="action" id="playBtn" onclick="playRecording()" disabled>▶ Playback</button><button class="action" onclick="toggleCoach()">Flip Coach</button><button class="action primary" onclick="finishCard()">Done →</button></div>
+    <div class="playhead">
+      <button class="back" onclick="confirmExit()">← Home</button>
+      <div class="progress" id="progress">Card 1 of 5</div>
+    </div>
+    <div class="timerbar">
+      <div><div class="category" style="color:var(--muted);opacity:1">DRILL TIMER</div><div class="timer" id="timer">01:00</div></div>
+      <div class="timerControls">
+        <button class="tiny" id="timerBtn" onclick="toggleTimer()">Start</button>
+        <button class="tiny" onclick="resetTimer()">Reset</button>
+      </div>
+    </div>
+    <div class="cardwrap">
+      <article class="card" id="card">
+        <div class="cardTop">
+          <div class="category" id="category"></div>
+          <div class="tasktitle" id="tasktitle"></div>
+          <div class="prompt" id="prompt"></div>
+          <div class="watch" id="watch"></div>
+          <div class="coach" id="coach">
+            <div class="coachLabel">Coach</div>
+            <div class="coachText" id="coachText"></div>
+            <div class="example" id="example"></div>
+          </div>
+        </div>
+        <div class="cardBottom">
+          <div class="cardmeta"><div class="duration" id="duration"></div><div class="skilltag" id="skilltag"></div></div>
+        </div>
+      </article>
+    </div>
+    <div class="actiongrid">
+      <button class="action" id="recordBtn" onclick="toggleRecording()">● Record</button>
+      <button class="action" id="playBtn" onclick="playRecording()" disabled>▶ Playback</button>
+      <button class="action" onclick="toggleCoach()">Flip Coach</button>
+      <button class="action primary" onclick="finishCard()">Done →</button>
+    </div>
     <div class="micnote">Recording is optional and stays in memory only until you record again or close the page.</div>
   </section>
 
-  <section id="review" class="view"><div class="playhead"><button class="back" onclick="show('play')">← Back</button><div class="progress">Self-review</div></div><div class="reviewCard"><div class="category">How did it land?</div><h2>Rate the rep.</h2><p>Don't chase perfection. Score the attempt quickly, notice one thing to improve, and move on.</p><div class="rategrid"><button class="rate" onclick="rateCard(1)"><span>↻</span>Needs reps<small>+5 XP</small></button><button class="rate" onclick="rateCard(2)"><span>✓</span>Solid<small>+10 XP</small></button><button class="rate best" onclick="rateCard(3)"><span>⚡</span>Sharp<small>+15 XP</small></button></div></div></section>
+  <section id="review" class="view">
+    <div class="playhead"><button class="back" onclick="show('play')">← Back</button><div class="progress">Self-review</div></div>
+    <div class="reviewCard">
+      <div class="category">How did it land?</div>
+      <h2>Rate the rep.</h2>
+      <p>Don't chase perfection. Score the attempt quickly, notice one thing to improve, and move on.</p>
+      <div class="rategrid">
+        <button class="rate" onclick="rateCard(1)"><span>↻</span>Needs reps<small>+5 XP</small></button>
+        <button class="rate" onclick="rateCard(2)"><span>✓</span>Solid<small>+10 XP</small></button>
+        <button class="rate best" onclick="rateCard(3)"><span>⚡</span>Sharp<small>+15 XP</small></button>
+      </div>
+    </div>
+  </section>
 
-  <section id="summary" class="view summary"><div class="topbar"><div class="brand">IMPACT</div><button class="iconbtn" onclick="show('home');renderHome()">⌂</button></div><div class="summaryHero"><div class="kicker">Session complete</div><h2>You got the reps.</h2><div class="xp" id="sessionXp">+0 XP</div><p id="summaryText">Clear communication is trained the same way as any other skill: deliberate reps, feedback, repeat.</p></div><div class="summaryList" id="summaryList"></div><button class="wideBtn" onclick="startPreset('quick')">Do a Quick Hit</button><button class="ghostBtn" onclick="show('home');renderHome()">Back to Home</button></section>
+  <section id="summary" class="view summary">
+    <div class="topbar"><div class="brand">IMPACT</div><button class="iconbtn" onclick="show('home');renderHome()">⌂</button></div>
+    <div class="summaryHero">
+      <div class="kicker">Session complete</div>
+      <h2>You got the reps.</h2>
+      <div class="xp" id="sessionXp">+0 XP</div>
+      <p id="summaryText">Clear communication is trained the same way as any other skill: deliberate reps, feedback, repeat.</p>
+    </div>
+    <div class="summaryList" id="summaryList"></div>
+    <button class="wideBtn" onclick="startPreset('quick')">Do a Quick Hit</button>
+    <button class="ghostBtn" onclick="show('home');renderHome()">Back to Home</button>
+  </section>
 </div>
 
-<div class="modal" id="settings"><div class="sheet"><div class="sheethead"><h2>Settings</h2><button class="iconbtn" style="color:var(--ink);border-color:rgba(8,39,37,.12)" onclick="closeSettings()">×</button></div><div class="settingsGroup"><h3>Focus</h3><div class="settingRow"><div><p>Auto-start timers</p><small>Start the countdown when each card opens.</small></div><button class="switch" id="autoTimerBtn" onclick="toggleSetting('autoTimer')">Off</button></div><div class="settingRow"><div><p>Coach hidden first</p><small>Attempt the drill before revealing guidance.</small></div><button class="switch" id="coachHiddenBtn" onclick="toggleSetting('coachHidden')">On</button></div></div><div class="settingsGroup"><h3>Privacy</h3><div class="settingRow"><div><p>Local only</p><small>No account, analytics, cloud storage, or audio upload.</small></div><span style="font-weight:900;color:#207f73">✓</span></div></div><div class="settingsGroup"><h3>Progress</h3><button class="dangerBtn" onclick="resetProgress()">Reset all progress</button></div></div></div>
+<div class="modal" id="settings">
+  <div class="sheet">
+    <div class="sheethead"><h2>Settings</h2><button class="iconbtn" style="color:var(--ink);border-color:rgba(8,39,37,.12)" onclick="closeSettings()">×</button></div>
+    <div class="settingsGroup">
+      <h3>Focus</h3>
+      <div class="settingRow"><div><p>Auto-start timers</p><small>Start the countdown when each card opens.</small></div><button class="switch" id="autoTimerBtn" onclick="toggleSetting('autoTimer')">Off</button></div>
+      <div class="settingRow"><div><p>Coach hidden first</p><small>Attempt the drill before revealing guidance.</small></div><button class="switch" id="coachHiddenBtn" onclick="toggleSetting('coachHidden')">On</button></div>
+    </div>
+    <div class="settingsGroup">
+      <h3>Privacy</h3>
+      <div class="settingRow"><div><p>Local only</p><small>No account, analytics, cloud storage, or audio upload.</small></div><span style="font-weight:900;color:#207f73">✓</span></div>
+    </div>
+    <div class="settingsGroup">
+      <h3>Progress</h3>
+      <button class="dangerBtn" onclick="resetProgress()">Reset all progress</button>
+    </div>
+  </div>
+</div>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -194,16 +304,22 @@ function startPreset(type){
 }
 function beginSession(){sessionIndex=0;sessionXp=0;sessionRatings=[];stopTimer();clearRecording();show('play');renderCard();}
 function renderCard(){
-  const c=session[sessionIndex];if(!c){finishSession();return;}
+  const c=session[sessionIndex]; if(!c){finishSession();return;}
   document.getElementById('progress').textContent=`Card ${sessionIndex+1} of ${session.length}`;
   document.getElementById('category').textContent=c.category;
   document.getElementById('tasktitle').textContent=c.t;
   document.getElementById('prompt').textContent=c.p;
   const parts=c.w.split(':');
   document.getElementById('watch').innerHTML=`<strong>${parts[0]}:</strong>${parts.length>1?c.w.substring(c.w.indexOf(':')+1):c.w}`;
-  document.getElementById('coachText').innerHTML=c.c;document.getElementById('example').innerHTML=c.e;
-  document.getElementById('duration').textContent=`${c.s} second drill`;document.getElementById('skilltag').textContent=c.tag;
-  document.getElementById('coach').classList.toggle('open',!settings.coachHidden);secondsLeft=c.s;updateTimer();document.getElementById('card').classList.remove('out');clearRecording();if(settings.autoTimer)startTimer();
+  document.getElementById('coachText').innerHTML=c.c;
+  document.getElementById('example').innerHTML=c.e;
+  document.getElementById('duration').textContent=`${c.s} second drill`;
+  document.getElementById('skilltag').textContent=c.tag;
+  document.getElementById('coach').classList.toggle('open',!settings.coachHidden);
+  secondsLeft=c.s; updateTimer();
+  document.getElementById('card').classList.remove('out');
+  clearRecording();
+  if(settings.autoTimer) startTimer();
 }
 function toggleCoach(){document.getElementById('coach').classList.toggle('open');}
 function formatTime(s){const m=Math.floor(s/60),sec=s%60;return `${String(m).padStart(2,'0')}:${String(sec).padStart(2,'0')}`;}
@@ -213,18 +329,73 @@ function stopTimer(){if(timerId)clearInterval(timerId);timerId=null;timerRunning
 function toggleTimer(){timerRunning?stopTimer():startTimer();}
 function resetTimer(){stopTimer();secondsLeft=session[sessionIndex]?.s||60;updateTimer();}
 function finishCard(){stopTimer();show('review');}
-function rateCard(r){const gain=r===1?5:r===2?10:15;state.xp+=gain;state.completed++;state.days[dateKey()]=(state.days[dateKey()]||0)+1;const cat=session[sessionIndex].category;state.ratings[cat]=state.ratings[cat]||{sum:0,count:0};state.ratings[cat].sum+=r;state.ratings[cat].count++;sessionXp+=gain;sessionRatings.push({category:cat,rating:r,title:session[sessionIndex].t});save();sessionIndex++;if(sessionIndex>=session.length){finishSession();return;}show('play');const card=document.getElementById('card');card.classList.add('out');setTimeout(renderCard,130);}
-function finishSession(){stopTimer();clearRecording();document.getElementById('sessionXp').textContent=`+${sessionXp} XP`;const sharp=sessionRatings.filter(x=>x.rating===3).length;document.getElementById('summaryText').textContent=sharp>=Math.ceil(sessionRatings.length/2)?'Strong run. Keep the pauses and clean endings, and resist adding detail after the point is already clear.':'Good reps. Pick one weakness you noticed and attack that skill again tomorrow.';const list=document.getElementById('summaryList');list.innerHTML='';const byCat={};sessionRatings.forEach(x=>{byCat[x.category]=byCat[x.category]||[];byCat[x.category].push(x.rating);});Object.entries(byCat).forEach(([cat,vals])=>{const avg=vals.reduce((a,b)=>a+b,0)/vals.length;const label=avg>=2.6?'Sharp':avg>=1.6?'Solid':'Needs reps';const row=document.createElement('div');row.className='summaryRow';row.innerHTML=`<span>${CATEGORY_ICON[cat]} ${cat}</span><strong>${label}</strong>`;list.appendChild(row);});show('summary');renderHome();}
-function confirmExit(){if(sessionIndex>0&&sessionIndex<session.length&&!confirm('End this session and return home?'))return;stopTimer();clearRecording();show('home');renderHome();}
+function rateCard(r){
+  const gain=r===1?5:r===2?10:15;
+  state.xp+=gain; state.completed++;
+  state.days[dateKey()]=(state.days[dateKey()]||0)+1;
+  const cat=session[sessionIndex].category;
+  state.ratings[cat]=state.ratings[cat]||{sum:0,count:0};
+  state.ratings[cat].sum+=r; state.ratings[cat].count++;
+  sessionXp+=gain; sessionRatings.push({category:cat,rating:r,title:session[sessionIndex].t});
+  save(); sessionIndex++;
+  if(sessionIndex>=session.length){finishSession();return;}
+  show('play');
+  const card=document.getElementById('card');card.classList.add('out');
+  setTimeout(renderCard,130);
+}
+function finishSession(){
+  stopTimer();clearRecording();
+  document.getElementById('sessionXp').textContent=`+${sessionXp} XP`;
+  const sharp=sessionRatings.filter(x=>x.rating===3).length;
+  document.getElementById('summaryText').textContent=sharp>=Math.ceil(sessionRatings.length/2)
+    ?'Strong run. Keep the pauses and clean endings, and resist adding detail after the point is already clear.'
+    :'Good reps. Pick one weakness you noticed and attack that skill again tomorrow.';
+  const list=document.getElementById('summaryList');list.innerHTML='';
+  const byCat={};
+  sessionRatings.forEach(x=>{byCat[x.category]=byCat[x.category]||[];byCat[x.category].push(x.rating);});
+  Object.entries(byCat).forEach(([cat,vals])=>{
+    const avg=vals.reduce((a,b)=>a+b,0)/vals.length;
+    const label=avg>=2.6?'Sharp':avg>=1.6?'Solid':'Needs reps';
+    const row=document.createElement('div');row.className='summaryRow';
+    row.innerHTML=`<span>${CATEGORY_ICON[cat]} ${cat}</span><strong>${label}</strong>`;
+    list.appendChild(row);
+  });
+  show('summary');renderHome();
+}
+function confirmExit(){if(sessionIndex>0&&sessionIndex<session.length&& !confirm('End this session and return home?'))return;stopTimer();clearRecording();show('home');renderHome();}
 
 async function toggleRecording(){
   if(recording){mediaRecorder.stop();return;}
   if(!navigator.mediaDevices||!window.MediaRecorder){toast('Recording is not supported in this browser.');return;}
-  try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});audioChunks=[];mediaRecorder=new MediaRecorder(stream);mediaRecorder.ondataavailable=e=>{if(e.data.size)audioChunks.push(e.data);};mediaRecorder.onstop=()=>{recording=false;document.getElementById('recordBtn').textContent='● Record';document.getElementById('recordBtn').classList.remove('recording');stream.getTracks().forEach(t=>t.stop());const blob=new Blob(audioChunks,{type:mediaRecorder.mimeType||'audio/webm'});if(audioBlobUrl)URL.revokeObjectURL(audioBlobUrl);audioBlobUrl=URL.createObjectURL(blob);document.getElementById('playBtn').disabled=false;toast('Recording ready for playback');};mediaRecorder.start();recording=true;document.getElementById('recordBtn').textContent='■ Stop';document.getElementById('recordBtn').classList.add('recording');}
-  catch(e){toast('Microphone permission was not granted.');}
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    audioChunks=[]; mediaRecorder=new MediaRecorder(stream);
+    mediaRecorder.ondataavailable=e=>{if(e.data.size)audioChunks.push(e.data);};
+    mediaRecorder.onstop=()=>{
+      recording=false;
+      document.getElementById('recordBtn').textContent='● Record';
+      document.getElementById('recordBtn').classList.remove('recording');
+      stream.getTracks().forEach(t=>t.stop());
+      const blob=new Blob(audioChunks,{type:mediaRecorder.mimeType||'audio/webm'});
+      if(audioBlobUrl)URL.revokeObjectURL(audioBlobUrl);
+      audioBlobUrl=URL.createObjectURL(blob);
+      document.getElementById('playBtn').disabled=false;
+      toast('Recording ready for playback');
+    };
+    mediaRecorder.start(); recording=true;
+    document.getElementById('recordBtn').textContent='■ Stop';
+    document.getElementById('recordBtn').classList.add('recording');
+  }catch(e){toast('Microphone permission was not granted.');}
 }
 function playRecording(){if(audioBlobUrl)new Audio(audioBlobUrl).play();}
-function clearRecording(){if(mediaRecorder&&recording){try{mediaRecorder.stop();}catch(e){}}recording=false;if(audioBlobUrl){URL.revokeObjectURL(audioBlobUrl);audioBlobUrl=null;}const r=document.getElementById('recordBtn'),p=document.getElementById('playBtn');if(r){r.textContent='● Record';r.classList.remove('recording');}if(p)p.disabled=true;}
+function clearRecording(){
+  if(mediaRecorder&&recording){try{mediaRecorder.stop();}catch(e){}}
+  recording=false;
+  if(audioBlobUrl){URL.revokeObjectURL(audioBlobUrl);audioBlobUrl=null;}
+  const r=document.getElementById('recordBtn'),p=document.getElementById('playBtn');
+  if(r){r.textContent='● Record';r.classList.remove('recording');}
+  if(p)p.disabled=true;
+}
 
 document.getElementById('settingsBtn').onclick=()=>{renderSettings();document.getElementById('settings').classList.add('open');};
 function closeSettings(){document.getElementById('settings').classList.remove('open');}
@@ -232,6 +403,7 @@ function renderSettings(){document.getElementById('autoTimerBtn').textContent=se
 function toggleSetting(key){settings[key]=!settings[key];save();renderSettings();}
 function resetProgress(){if(!confirm('Reset XP, streak, ratings, and completed-card history?'))return;state={xp:0,completed:0,days:{},ratings:{}};save();renderHome();closeSettings();toast('Progress reset');}
 document.getElementById('settings').addEventListener('click',e=>{if(e.target.id==='settings')closeSettings();});
+
 renderHome();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('./sw.js').catch(()=>{});
 </script>
